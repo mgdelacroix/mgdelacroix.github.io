@@ -3,7 +3,7 @@ date = "2017-06-23"
 draft = false
 title = "Deploying a python script"
 slug = "deploying-a-python-script"
-tags = ["python", "sysadmin", "trick"]
+tags = ["python", "sysadmin", "devops", "trick", "scripting", "dev"]
 author = "Miguel de la Cruz"
 +++
 

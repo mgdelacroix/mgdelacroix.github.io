@@ -3,7 +3,7 @@ date = "2015-02-18"
 draft = false
 title = "Geb 101: Simple Scripts"
 slug = "geb-101-simple-scripts"
-tags = ["groovy", "geb", "scripting"]
+tags = ["groovy", "geb", "scripting", "dev"]
 author = "Miguel de la Cruz"
 +++
 

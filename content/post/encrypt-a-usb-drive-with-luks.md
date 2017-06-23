@@ -3,7 +3,7 @@ date = "2015-11-15"
 draft = false
 title = "Encrypt a USB drive with LUKS"
 slug = "encrypt-a-usb-drive-with-luks"
-tags = ["security", "linux", "encryption"]
+tags = ["security", "encryption"]
 author = "Miguel de la Cruz"
 +++
 
