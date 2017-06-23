@@ -5,7 +5,7 @@ PAGES_BRANCH=master
 PAGES_DIR=pages
 DATE=`date +%Y%m%d-%H%M`
 
-git worktree add $PAGES_DIR $PAGES_BRANCH
+git worktree add $PAGES_DIR origin/$PAGES_BRANCH
 hugo --destination $PAGES_DIR
 (cd $PAGES_DIR && \
      git commit -a -m "$DATE" && \
