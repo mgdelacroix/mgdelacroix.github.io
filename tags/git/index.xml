@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Core dump</title>
+    <link>http://mgdelacroix.es/tags/git/</link>
+    <description>Recent content in Git on Core dump</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 28 Feb 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://mgdelacroix.es/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Gogs is now available in spanish!</title>
+      <link>http://mgdelacroix.es/post/gogs-is-now-available-in-spanish/</link>
+      <pubDate>Sat, 28 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://mgdelacroix.es/post/gogs-is-now-available-in-spanish/</guid>
+      <description>This has been the second year I went to FOSDEM. Is a great conference to learn, get together with friends that are spread across the world and enjoy Open Source.
+Being there and seeing the awesome things people were doing made me think about my last contributions to the community and how shy they are. A lot of times I&amp;rsquo;ve rejected contributing to a project or publishing a project or a library I&amp;rsquo;m working on due its early stage or the idea of the code or the approach &amp;ldquo;not being good enough&amp;rdquo;.</description>
+    </item>
+    
+  </channel>
+</rss>

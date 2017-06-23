@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Encryption on Core dump</title>
+    <link>http://mgdelacroix.es/tags/encryption/</link>
+    <description>Recent content in Encryption on Core dump</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Nov 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://mgdelacroix.es/tags/encryption/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Encrypt a USB drive with LUKS</title>
+      <link>http://mgdelacroix.es/post/encrypt-a-usb-drive-with-luks/</link>
+      <pubDate>Sun, 15 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://mgdelacroix.es/post/encrypt-a-usb-drive-with-luks/</guid>
+      <description>One of the best options we have to encrypt a USB is to use the Linux Unified Key Setup or LUKS. Through this process, we will format and generate a completely encrypted partition that will require a password to be accesed.
+Requirements The only requirement is the cryptsetup program, that can be installed through your favourite distribution&amp;rsquo;s package manager. In the case of Debian/Ubuntu, you just need to run</description>
+    </item>
+    
+  </channel>
+</rss>

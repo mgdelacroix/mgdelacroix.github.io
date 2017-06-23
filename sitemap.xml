@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://mgdelacroix.es/post/enhance-sqlite-output/</loc>
+    <lastmod>2017-04-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/post/encrypt-a-usb-drive-with-luks/</loc>
+    <lastmod>2015-11-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/post/gogs-is-now-available-in-spanish/</loc>
+    <lastmod>2015-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/post/geb-101-simple-scripts/</loc>
+    <lastmod>2015-02-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/post/about-to-start/</loc>
+    <lastmod>2015-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/</loc>
+    <lastmod>2017-04-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/tags/encryption/</loc>
+    <lastmod>2015-11-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/tags/foss/</loc>
+    <lastmod>2015-02-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/tags/geb/</loc>
+    <lastmod>2015-02-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/tags/git/</loc>
+    <lastmod>2015-02-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/tags/gogs/</loc>
+    <lastmod>2015-02-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/tags/groovy/</loc>
+    <lastmod>2015-02-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/tags/linux/</loc>
+    <lastmod>2015-11-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/tags/meta/</loc>
+    <lastmod>2015-02-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/post/</loc>
+    <lastmod>2017-04-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/tags/scripting/</loc>
+    <lastmod>2015-02-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/tags/security/</loc>
+    <lastmod>2015-11-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/tags/sqlite/</loc>
+    <lastmod>2017-04-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/tags/sysadmin/</loc>
+    <lastmod>2017-04-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/tags/</loc>
+    <lastmod>2015-11-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/tags/translation/</loc>
+    <lastmod>2015-02-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mgdelacroix.es/tags/trick/</loc>
+    <lastmod>2017-04-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

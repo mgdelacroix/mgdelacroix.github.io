@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Core dump</title>
+    <link>http://mgdelacroix.es/</link>
+    <description>Recent content on Core dump</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 16 Apr 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://mgdelacroix.es/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Enhance SQLite output</title>
+      <link>http://mgdelacroix.es/post/enhance-sqlite-output/</link>
+      <pubDate>Sun, 16 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://mgdelacroix.es/post/enhance-sqlite-output/</guid>
+      <description>I&amp;rsquo;ve been doing some development in Baoqu with SQLite recently, and one of the problems I&amp;rsquo;ve faced is that the default output from a query in the SQLite client is too basic, almost confusing:
+sqlite&amp;gt; select * from users; 1|Ramira 2|Maria 3|Yamilo 4|Mario 5|Pérez-Reverte 6|Yisus 7|Miguel 8|Marta 9|andy 10|lol 11|lol2 12|lolaso  That&amp;rsquo;s a simple query, let&amp;rsquo;s complicate it a little more:
+sqlite&amp;gt; select * from users as u inner join users_circles as uc on u.</description>
+    </item>
+    
+    <item>
+      <title>Encrypt a USB drive with LUKS</title>
+      <link>http://mgdelacroix.es/post/encrypt-a-usb-drive-with-luks/</link>
+      <pubDate>Sun, 15 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://mgdelacroix.es/post/encrypt-a-usb-drive-with-luks/</guid>
+      <description>One of the best options we have to encrypt a USB is to use the Linux Unified Key Setup or LUKS. Through this process, we will format and generate a completely encrypted partition that will require a password to be accesed.
+Requirements The only requirement is the cryptsetup program, that can be installed through your favourite distribution&amp;rsquo;s package manager. In the case of Debian/Ubuntu, you just need to run</description>
+    </item>
+    
+    <item>
+      <title>Gogs is now available in spanish!</title>
+      <link>http://mgdelacroix.es/post/gogs-is-now-available-in-spanish/</link>
+      <pubDate>Sat, 28 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://mgdelacroix.es/post/gogs-is-now-available-in-spanish/</guid>
+      <description>This has been the second year I went to FOSDEM. Is a great conference to learn, get together with friends that are spread across the world and enjoy Open Source.
+Being there and seeing the awesome things people were doing made me think about my last contributions to the community and how shy they are. A lot of times I&amp;rsquo;ve rejected contributing to a project or publishing a project or a library I&amp;rsquo;m working on due its early stage or the idea of the code or the approach &amp;ldquo;not being good enough&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>Geb 101: Simple Scripts</title>
+      <link>http://mgdelacroix.es/post/geb-101-simple-scripts/</link>
+      <pubDate>Wed, 18 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://mgdelacroix.es/post/geb-101-simple-scripts/</guid>
+      <description>These days I’m in between projects, so I decided to automate a task related to a web interface and a tedious list shaped as an HTML form. This automation would imply two processes: parsing an HTML page and filling some fields in another page, plus some small and simple processing.
+I had two options, to use HTTP directly through HTTP Builder or something like that or to code various small scripts with Geb.</description>
+    </item>
+    
+    <item>
+      <title>About to start</title>
+      <link>http://mgdelacroix.es/post/about-to-start/</link>
+      <pubDate>Sun, 15 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://mgdelacroix.es/post/about-to-start/</guid>
+      <description>Expect new content here soon&amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>
