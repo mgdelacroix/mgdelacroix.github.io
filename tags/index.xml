@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Core dump</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Nov 2015 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Jun 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mgdelacroix.es/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Dev</title>
+      <link>http://mgdelacroix.es/tags/dev/</link>
+      <pubDate>Fri, 23 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://mgdelacroix.es/tags/dev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Devops</title>
+      <link>http://mgdelacroix.es/tags/devops/</link>
+      <pubDate>Fri, 23 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://mgdelacroix.es/tags/devops/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Encryption</title>
@@ -66,15 +84,6 @@
     </item>
     
     <item>
-      <title>Linux</title>
-      <link>http://mgdelacroix.es/tags/linux/</link>
-      <pubDate>Sun, 15 Nov 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://mgdelacroix.es/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Meta</title>
       <link>http://mgdelacroix.es/tags/meta/</link>
       <pubDate>Sun, 15 Feb 2015 00:00:00 +0000</pubDate>
@@ -95,7 +104,7 @@
     <item>
       <title>Scripting</title>
       <link>http://mgdelacroix.es/tags/scripting/</link>
-      <pubDate>Wed, 18 Feb 2015 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 23 Jun 2017 00:00:00 +0000</pubDate>
       
       <guid>http://mgdelacroix.es/tags/scripting/</guid>
       <description></description>

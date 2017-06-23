@@ -4,32 +4,28 @@
     <meta name="generator" content="Hugo 0.24" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhance SQLite output | Core dump</title>
-    <meta name="description" content="I&rsquo;ve been doing some development in Baoqu with SQLite recently, and one of the problems I&rsquo;ve faced is that the default output from a query in the SQLite client is too basic, almost confusing:
-sqlite&gt; select * from users; 1|Ramira 2|Maria 3|Yamilo 4|Mario 5|Pérez-Reverte 6|Yisus 7|Miguel 8|Marta 9|andy 10|lol 11|lol2 12|lolaso  That&rsquo;s a simple query, let&rsquo;s complicate it a little more:
-sqlite&gt; select * from users as u inner join users_circles as uc on u.">
-    <meta name="keywords" content="sqlite, trick, sysadmin">
+    <title>Dev | Core dump</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
     
     
     
     
+      <meta name="robots" content="noindex">
+    
     
 
-  <meta name="author" content="Miguel de la Cruz">
+  <meta name="author" content="">
 
 
-    <meta property="og:title" content="Enhance SQLite output" />
-<meta property="og:description" content="I&rsquo;ve been doing some development in Baoqu with SQLite recently, and one of the problems I&rsquo;ve faced is that the default output from a query in the SQLite client is too basic, almost confusing:
-sqlite&gt; select * from users; 1|Ramira 2|Maria 3|Yamilo 4|Mario 5|Pérez-Reverte 6|Yisus 7|Miguel 8|Marta 9|andy 10|lol 11|lol2 12|lolaso  That&rsquo;s a simple query, let&rsquo;s complicate it a little more:
-sqlite&gt; select * from users as u inner join users_circles as uc on u." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://mgdelacroix.es/post/enhance-sqlite-output/" />
+    <meta property="og:title" content="Dev" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://mgdelacroix.es/tags/dev/" />
 
 
 
-<meta property="article:published_time" content="2017-04-16T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2017-04-16T00:00:00&#43;00:00"/>
-
+<meta property="og:updated_time" content="2017-06-23T00:00:00&#43;00:00"/>
 
 
 
@@ -50,7 +46,9 @@ sqlite&gt; select * from users as u inner join users_circles as uc on u." />
     
     
     
-    <link rel="canonical" href="http://mgdelacroix.es/post/enhance-sqlite-output/">
+      <link href="http://mgdelacroix.es/tags/dev/index.xml" rel="alternate" type="application/rss+xml" title="Core dump" />
+    
+    <link rel="canonical" href="http://mgdelacroix.es/tags/dev/">
     
     
     <link rel="icon" sizes="any" href="data:image/svg+xml,%3Csvg%20viewBox='0%200%2046%2045'%20xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3EAfter%20Dark%3C/title%3E%3Cpath%20d='M.708%2045L23%20.416%2045.292%2045H.708zM35%2038L23%2019%2011%2038h24z'%20fill='%23000'/%3E%3C/svg%3E">
@@ -142,25 +140,17 @@ article [itemprop="description"] {
 
 </header>
     <main>
-  <article itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1>Dev</h1>
+  </header>
+  
+    <article itemscope itemtype="http://schema.org/CreativeWork">
+  <header>
+    <h2 itemprop="name">
+      <a href="/post/deploying-a-python-script/">Deploying a python script</a>
+    </h2>
     
-<meta itemprop="name" content="Enhance SQLite output">
-<meta itemprop="description" content="I&rsquo;ve been doing some development in Baoqu with SQLite recently, and one of the problems I&rsquo;ve faced is that the default output from a query in the SQLite client is too basic, almost confusing:
-sqlite&gt; select * from users; 1|Ramira 2|Maria 3|Yamilo 4|Mario 5|Pérez-Reverte 6|Yisus 7|Miguel 8|Marta 9|andy 10|lol 11|lol2 12|lolaso  That&rsquo;s a simple query, let&rsquo;s complicate it a little more:
-sqlite&gt; select * from users as u inner join users_circles as uc on u.">
-
-
-<meta itemprop="dateModified" content="2017-04-16T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="324">
-
-
-
-<meta itemprop="keywords" content="dev,devops,encryption,foss,geb,git,gogs,groovy,meta,python,scripting,security,sqlite,sysadmin,translation,trick," />
-
-    <header>
-      <h1 itemprop="headline">Enhance SQLite output</h1>
-      <p class="muted">
-        <svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+      <p class="muted"><svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
   <circle cx="16" cy="16" r="14" />
   <path d="M16 8 L16 16 20 20" />
 </svg>
@@ -169,157 +159,71 @@ sqlite&gt; select * from users as u inner join users_circles as uc on u.">
   <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
 </svg>
 
-  Published: <time datetime="2017-04-16T00:00:00&#43;00:00">16 Apr, 2017</time>
+  Published: <time datetime="2017-06-23T00:00:00&#43;00:00">23 Jun, 2017</time>
 
-
-      </p>
-    </header>
-    
-    
-
-    <div itemprop="articleBody">
-      <p>I&rsquo;ve been doing some development in <a href="https://github.com/baoqu">Baoqu</a> with <a href="https://www.sqlite.org">SQLite</a> recently, and one of the problems I&rsquo;ve faced is that the default output from a query in the SQLite client is too basic, almost confusing:</p>
-
-<pre><code class="language-sql">sqlite&gt; select * from users;
-1|Ramira
-2|Maria
-3|Yamilo
-4|Mario
-5|Pérez-Reverte
-6|Yisus
-7|Miguel
-8|Marta
-9|andy
-10|lol
-11|lol2
-12|lolaso
-</code></pre>
-
-<p>That&rsquo;s a simple query, let&rsquo;s complicate it a little more:</p>
-
-<pre><code class="language-sql">sqlite&gt; select * from users as u
-          inner join users_circles as uc
-            on u.id=uc.&quot;user-id&quot;
-          inner join circles as c
-            on uc.&quot;circle-id&quot;=c.id;
-1|Ramira|1|1|1|1|1|3|3
-2|Maria|2|1|1|1|1|3|3
-3|Yamilo|3|1|1|1|1|3|3
-4|Mario|4|2|2|1|1|3|3
-5|Pérez-Reverte|5|2|2|1|1|3|3
-6|Yisus|6|2|2|1|1|3|3
-1|Ramira|1|3|3|1|2|3|9
-2|Maria|2|3|3|1|2|3|9
-3|Yamilo|3|3|3|1|2|3|9
-4|Mario|4|3|3|1|2|3|9
-5|Pérez-Reverte|5|3|3|1|2|3|9
-6|Yisus|6|3|3|1|2|3|9
-7|Miguel|7|4|4|1|1|3|3
-8|Marta |8|4|4|1|1|3|3
-9|andy|9|4|4|1|1|3|3
-10|lol|10|5|5|1|1|3|
-11|lol2|11|5|5|1|1|3|
-7|Miguel|7|3|3|1|2|3|9
-8|Marta |8|3|3|1|2|3|9
-9|andy|9|3|3|1|2|3|9
-12|lolaso|12|5|5|1|1|3|
-1|Ramira|1|9|9|1|3|3|
-2|Maria|2|9|9|1|3|3|
-3|Yamilo|3|9|9|1|3|3|
-4|Mario|4|9|9|1|3|3|
-5|Pérez-Reverte|5|9|9|1|3|3|
-6|Yisus|6|9|9|1|3|3|
-7|Miguel|7|9|9|1|3|3|
-8|Marta |8|9|9|1|3|3|
-9|andy|9|9|9|1|3|3|
-</code></pre>
-
-<p>That is simply unreadable, and not only because almost all the columns are plain integers, but the untabbed layout and the lack of column names only makes it worst.</p>
-
-<p>Luckly, the SQLite client provides us with some options we can activate to improve this. In the client, run:</p>
-
-<pre><code class="language-sql">sqlite&gt; .headers on
-sqlite&gt; .mode column
-</code></pre>
-
-<p>And now, the output is much more readable:</p>
-
-<pre><code class="language-sql">sqlite&gt; select * from users as u
-          inner join users_circles as uc
-            on u.id=uc.&quot;user-id&quot;;
-id          name        user-id     circle-id
-----------  ----------  ----------  ----------
-1           Ramira      1           1
-2           Maria       2           1
-3           Yamilo      3           1
-4           Mario       4           2
-5           Perez-Rev   5           2
-6           Yisus       6           2
-
-...
-</code></pre>
-
-<p>You can use the <code>.width</code> option to adjust each column width:</p>
-
-<pre><code class="language-sql">sqlite&gt; .width 2 14 7 9
-sqlite&gt; select * from users as u
-          inner join users_circles as uc
-            on u.id=uc.&quot;user-id&quot;;
-id  name            user-id  circle-id
---  --------------  -------  ---------
-1   Ramira          1        1
-2   Maria           2        1
-3   Yamilo          3        1
-4   Mario           4        2
-5   Perez-Reverte   5        2
-6   Yisus           6        2
-
-...
-</code></pre>
-
-<p>If you want this commands to run each time you use the SQLite client, just write them to a <code>$HOME/.sqliterc</code> file. You can find more info about this commands at <a href="https://www.sqlite.org/cli.html#special_commands_to_sqlite3_dot_commands_">their section in the SQLite documentation</a>.</p>
-
-    </div>
-    
-    <footer>
-      <hr>
-      <p>
-  Published
-  
-    
-      by <span itemprop="author">Miguel de la Cruz</span>
-    
-  
-  <time datetime="2017-04-16T00:00:00&#43;00:00">
-    16 Apr, 2017
-  </time>
-  
-  
-    and tagged <a href="/tags/sqlite/">sqlite</a>, <a href="/tags/sysadmin/">sysadmin</a> and <a href="/tags/trick/">trick</a>
-  
-  using <span itemprop="wordCount">324</span> words.
 </p>
-
-      
+    
+  </header>
   
+  <div itemprop="description">
+    Lately I&rsquo;ve been writing a lot of python to script some common processes in a large infrastructure. Those scripts require some python libraries which are not part of the standard library nor installed by default in all systems. For example, I love how docopt manages the arguments of a python script, or using the YAML format for my config files instead of INI.
+During the development stage, I usually manage those dependencies using pip and virtualenv, but I would like my deployment to require only python3 installed in the remote machine.
+  </div>
+  
+    <p><a itemprop="url" href="/post/deploying-a-python-script/">Read More&nbsp;&raquo;</a></p>
+  
+  <meta itemprop="inLanguage" content="en-us">
+  <meta itemprop="datePublished" content="2017-06-23T00:00:00&#43;00:00">
+  <meta itemprop="dateModified" content="2017-06-23T00:00:00&#43;00:00">
+  
+</article>
 
+  
+    <article itemscope itemtype="http://schema.org/CreativeWork">
+  <header>
+    <h2 itemprop="name">
+      <a href="/post/geb-101-simple-scripts/">Geb 101: Simple Scripts</a>
+    </h2>
+    
+      <p class="muted"><svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+  <circle cx="16" cy="16" r="14" />
+  <path d="M16 8 L16 16 20 20" />
+</svg>
+<span>5 minute read</span>
+<svg style="margin-bottom: -3px" class="i-edit" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+  <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
+</svg>
 
+  Published: <time datetime="2015-02-18T00:00:00&#43;00:00">18 Feb, 2015</time>
 
-  <aside>
-    <header>Related Content</header>
-    <ul>
-      
-      
-        <li><a href="/post/deploying-a-python-script/">Deploying a python script</a> &ndash; 2 minutes
-      
-    </ul>
-  </aside>
+</p>
+    
+  </header>
+  
+  <div itemprop="description">
+    These days I’m in between projects, so I decided to automate a task related to a web interface and a tedious list shaped as an HTML form. This automation would imply two processes: parsing an HTML page and filling some fields in another page, plus some small and simple processing.
+I had two options, to use HTTP directly through HTTP Builder or something like that or to code various small scripts with Geb.
+  </div>
+  
+    <p><a itemprop="url" href="/post/geb-101-simple-scripts/">Read More&nbsp;&raquo;</a></p>
+  
+  <meta itemprop="inLanguage" content="en-us">
+  <meta itemprop="datePublished" content="2015-02-18T00:00:00&#43;00:00">
+  <meta itemprop="dateModified" content="2015-02-18T00:00:00&#43;00:00">
+  
+</article>
 
-
-    </footer>
-  </article>
+  
 </main>
     <footer>
+  <nav>
+  <p>
+    
+    <span>Page 1 of 1</span>
+    
+  </p>
+</nav>
+
   
 
 </footer>

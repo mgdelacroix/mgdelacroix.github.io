@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Scripting on Core dump</title>
-    <link>http://mgdelacroix.es/tags/scripting/</link>
-    <description>Recent content in Scripting on Core dump</description>
+    <title>Devops on Core dump</title>
+    <link>http://mgdelacroix.es/tags/devops/</link>
+    <description>Recent content in Devops on Core dump</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 23 Jun 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://mgdelacroix.es/tags/scripting/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://mgdelacroix.es/tags/devops/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,16 +19,6 @@
       <guid>http://mgdelacroix.es/post/deploying-a-python-script/</guid>
       <description>Lately I&amp;rsquo;ve been writing a lot of python to script some common processes in a large infrastructure. Those scripts require some python libraries which are not part of the standard library nor installed by default in all systems. For example, I love how docopt manages the arguments of a python script, or using the YAML format for my config files instead of INI.
 During the development stage, I usually manage those dependencies using pip and virtualenv, but I would like my deployment to require only python3 installed in the remote machine.</description>
-    </item>
-    
-    <item>
-      <title>Geb 101: Simple Scripts</title>
-      <link>http://mgdelacroix.es/post/geb-101-simple-scripts/</link>
-      <pubDate>Wed, 18 Feb 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://mgdelacroix.es/post/geb-101-simple-scripts/</guid>
-      <description>These days I’m in between projects, so I decided to automate a task related to a web interface and a tedious list shaped as an HTML form. This automation would imply two processes: parsing an HTML page and filling some fields in another page, plus some small and simple processing.
-I had two options, to use HTTP directly through HTTP Builder or something like that or to code various small scripts with Geb.</description>
     </item>
     
   </channel>
