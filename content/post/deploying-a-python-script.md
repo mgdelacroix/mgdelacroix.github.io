@@ -7,7 +7,7 @@ tags = ["python", "sysadmin", "trick"]
 author = "Miguel de la Cruz"
 +++
 
-Lately I've been writing a lot of python to script some common processes in a large infrastructure. Those scripts require some python libraries which are not part of the standard library nor installed by default in all systems. For example, I love how [docopt](http://docopt.org/) manages the arguments of a python script, or using the YAML format for my config files instead of INI.
+Lately I've been writing a lot of python to script some common processes in a large infrastructure. Those scripts require some python libraries which are not part of the standard library nor installed by default in all systems. For example, I love how [docopt](http://docopt.org/) manages the arguments of a python script, or using the `YAML` format for my config files instead of `INI`.
 
 During the development stage, I usually manage those dependencies using `pip` and `virtualenv`, but I would like my deployment to require only `python3` installed in the remote machine.
 
