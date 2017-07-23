@@ -1,8 +1,11 @@
 +++
 date = "2017-06-23"
 draft = false
-title = "Deploying a python script"
-slug = "deploying-a-python-script"
+title = "Deploying a python script without virtualenv"
+slug = "deploying-a-python-script-without-virtualenv"
+aliases = [
+    "/post/deploying-a-python-script/"
+]
 tags = ["python", "sysadmin", "devops", "trick", "scripting", "dev"]
 author = "Miguel de la Cruz"
 +++
