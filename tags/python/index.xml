@@ -2,23 +2,58 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on Core dump</title>
-    <link>http://mgdelacroix.es/tags/python/</link>
+    <link>http://mgdelacroix.es/tags/python/index.xml</link>
     <description>Recent content in Python on Core dump</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 23 Jun 2017 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://mgdelacroix.es/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    
+    <atom:link href="http://mgdelacroix.es/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Deploying a python script</title>
-      <link>http://mgdelacroix.es/post/deploying-a-python-script/</link>
+      <title>Deploying a python script without virtualenv</title>
+      <link>http://mgdelacroix.es/post/deploying-a-python-script-without-virtualenv/</link>
       <pubDate>Fri, 23 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://mgdelacroix.es/post/deploying-a-python-script/</guid>
-      <description>Lately I&amp;rsquo;ve been writing a lot of python to script some common processes in a large infrastructure. Those scripts require some python libraries which are not part of the standard library nor installed by default in all systems. For example, I love how docopt manages the arguments of a python script, or using the YAML format for my config files instead of INI.
-During the development stage, I usually manage those dependencies using pip and virtualenv, but I would like my deployment to require only python3 installed in the remote machine.</description>
+      <guid>http://mgdelacroix.es/post/deploying-a-python-script-without-virtualenv/</guid>
+      <description>&lt;p&gt;Lately I&amp;rsquo;ve been writing a lot of python to script some common processes in a large infrastructure. Those scripts require some python libraries which are not part of the standard library nor installed by default in all systems. For example, I love how &lt;a href=&#34;http://docopt.org/&#34;&gt;docopt&lt;/a&gt; manages the arguments of a python script, or using the &lt;code&gt;YAML&lt;/code&gt; format for my config files instead of &lt;code&gt;INI&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;During the development stage, I usually manage those dependencies using &lt;code&gt;pip&lt;/code&gt; and &lt;code&gt;virtualenv&lt;/code&gt;, but I would like my deployment to require only &lt;code&gt;python3&lt;/code&gt; installed in the remote machine.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;pip&lt;/code&gt; allows us to download the dependencies to a local directory running the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;pip3 install -r requirements.txt --upgrade --system --target python_deps
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;upgrade&lt;/code&gt;: we use this flag to download not only the required dependency, but all the transitive dependencies that this one requires.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;system&lt;/code&gt;: by default, &lt;code&gt;pip&lt;/code&gt; installs the packages following the &lt;em&gt;user scheme&lt;/em&gt;, which is a specific directory structure for the interpreter to find the packages when running as a specific user. This flag modifies this behaviour, using a scheme that we point the interpreter to.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;target&lt;/code&gt;: we use this flag to tell &lt;code&gt;pip&lt;/code&gt; where we want the dependencies to be downloaded.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After installing the packages to a specific directory, we need to add that directory to our &lt;code&gt;PYTHONPATH&lt;/code&gt; environment variable when running the interpreter:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;PYTHONPATH=`pwd`/python_deps python3 main.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To wrap all of this, we can create a simple script to run our python program, that searchs for the dependencies directory, installs them if they are not there and then runs the program with the &lt;code&gt;PYTHONPATH&lt;/code&gt; variable set:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/usr/bin/env bash
+
+# Set the PYTHONPATH environment variable. Using export will make the variable
+# available for the rest of the script
+export PYTHONPATH=`pwd`/python_deps
+
+# If the python_deps directory doesn&#39;t exist, we download the dependencies there
+if [[ ! -d &amp;quot;$PYTHONPATH&amp;quot; ]]; then
+    pip3 install -r requirements.txt --upgrade --system --target $PYTHONPATH
+fi
+
+python3 src/main.py $@
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can now upload the script and run it from any system knowing that the only thing we need is the &lt;code&gt;python3&lt;/code&gt; interpreter to be installed.&lt;/p&gt;
+
+&lt;p&gt;An improvement for this method would be to directly create a debian package, but that&amp;rsquo;s for the next post.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

@@ -2,14 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Encryption on Core dump</title>
-    <link>http://mgdelacroix.es/tags/encryption/</link>
+    <link>http://mgdelacroix.es/tags/encryption/index.xml</link>
     <description>Recent content in Encryption on Core dump</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Nov 2015 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://mgdelacroix.es/tags/encryption/index.xml" rel="self" type="application/rss+xml" />
-    
+    <atom:link href="http://mgdelacroix.es/tags/encryption/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Encrypt a USB drive with LUKS</title>
@@ -17,8 +14,82 @@
       <pubDate>Sun, 15 Nov 2015 00:00:00 +0000</pubDate>
       
       <guid>http://mgdelacroix.es/post/encrypt-a-usb-drive-with-luks/</guid>
-      <description>One of the best options we have to encrypt a USB is to use the Linux Unified Key Setup or LUKS. Through this process, we will format and generate a completely encrypted partition that will require a password to be accesed.
-Requirements The only requirement is the cryptsetup program, that can be installed through your favourite distribution&amp;rsquo;s package manager. In the case of Debian/Ubuntu, you just need to run</description>
+      <description>
+
+&lt;p&gt;One of the best options we have to encrypt a USB is to use the
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup&#34;&gt;Linux Unified Key Setup&lt;/a&gt; or &lt;strong&gt;LUKS&lt;/strong&gt;. Through this process, we
+will format and generate a completely encrypted partition that will require a password to be accesed.&lt;/p&gt;
+
+&lt;h3 id=&#34;requirements&#34;&gt;Requirements&lt;/h3&gt;
+
+&lt;p&gt;The only requirement is the &lt;code&gt;cryptsetup&lt;/code&gt; program, that can be installed through your favourite distribution&amp;rsquo;s package
+manager. In the case of Debian/Ubuntu, you just need to run&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;apt install cryptsetup
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;formatting-the-usb&#34;&gt;Formatting the USB&lt;/h3&gt;
+
+&lt;p&gt;Through all this steps we will supose that the drive is identified into the system with &lt;code&gt;/dev/sdb&lt;/code&gt;. You need to find
+which name the system gave to your USB drive and use it instead.&lt;/p&gt;
+
+&lt;p&gt;First thing we need to do is to format the device itself with &lt;code&gt;cryptsetup&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;cryptsetup -y -v luksFormat /dev/sdb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The next step will be to initialize the volume. Each time we open the volume, the system will create a reference to it
+in the &lt;code&gt;/dev/mapper/&lt;/code&gt; directory. The third parameter on the following snippet is the &lt;em&gt;mapper&lt;/em&gt; that the device will have
+when opened.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;cryptsetup luksOpen /dev/sdb my-encripted-disk
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The first time we run this command, &lt;code&gt;cryptsetup&lt;/code&gt; will ask for a &lt;em&gt;passphrase&lt;/em&gt; for the volume. After introducing one, it
+will create a &lt;code&gt;/dev/mapper/my-encrypted-disk&lt;/code&gt; mapper, that represents our volume unencrypted.&lt;/p&gt;
+
+&lt;p&gt;We can check its state using&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;cryptsetup -v status my-encripted-disk
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Last thing we need to do is to format the partition using our favourite format. In this example, we will use plain
+&lt;code&gt;ext4&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;mkfs.ext4 /dev/mapper/my-encrypted-disk
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;mount-the-volume&#34;&gt;Mount the volume&lt;/h3&gt;
+
+&lt;p&gt;When the mapping is active, we can mount the volume as a normal partition&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;mount /dev/mapper/my-encrypted-disk /mnt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;unmount-and-extract-the-device&#34;&gt;Unmount and extract the device&lt;/h3&gt;
+
+&lt;p&gt;To extract the device, first we need to unmount the volume, then close the device through &lt;code&gt;cryptsetup&lt;/code&gt; and then we can
+safely extract it&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;umount /mnt
+cryptsetup luksClose my-encrypted-disk
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;summing-up&#34;&gt;Summing up&lt;/h3&gt;
+
+&lt;p&gt;It is not difficult to encrypt and use a USB drive to securely carry around our information. It just requires one step
+more than any other drive to be mounted into the system and ready to use.&lt;/p&gt;
+
+&lt;p&gt;Remember that the steps are:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Use &lt;code&gt;cryptsetup&lt;/code&gt; and &lt;strong&gt;luksOpen&lt;/strong&gt; to create a mapper.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mount&lt;/code&gt; the mapper as a normal volume.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Graphical file managers as &lt;code&gt;nautilus&lt;/code&gt; will even automatically detect and manage this kind of devices, easing the pain of
+having to do all the mounting manually.&lt;/p&gt;
+</description>
     </item>
     
   </channel>
