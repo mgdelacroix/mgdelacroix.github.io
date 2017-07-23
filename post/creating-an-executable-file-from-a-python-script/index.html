@@ -4,27 +4,26 @@
     <meta name="generator" content="Hugo 0.18.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sysadmin | Core dump</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <title>Creating an executable file from a python script | Core dump</title>
+    <meta name="description" content="Recently I wrote about how to deploy a python script without virtualenv. This method takes advantage of the idea of installing the script&rsquo;s dependencies in a local directory using pip and wraps them and our code with a simple shell script. The result was good, but you still needed to deploy a directory with your source code, another one with the dependencies and the wrapper script with those paths fixed, which will be the one to run.">
+    <meta name="keywords" content="python, sysadmin, devops, trick, scripting, dev">
     
     
     
-    
-      <meta name="robots" content="noindex">
     
     
 
-  <meta name="author" content="">
+  <meta name="author" content="Miguel de la Cruz">
 
 
-    <meta property="og:title" content="Sysadmin" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://mgdelacroix.es/tags/sysadmin/" />
+    <meta property="og:title" content="Creating an executable file from a python script" />
+<meta property="og:description" content="Recently I wrote about how to deploy a python script without virtualenv. This method takes advantage of the idea of installing the script&rsquo;s dependencies in a local directory using pip and wraps them and our code with a simple shell script. The result was good, but you still needed to deploy a directory with your source code, another one with the dependencies and the wrapper script with those paths fixed, which will be the one to run." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://mgdelacroix.es/post/creating-an-executable-file-from-a-python-script/" />
 
 
 <meta property="og:updated_time" content="2017-07-23T00:00:00&#43;00:00"/>
+
 
 
 
@@ -44,9 +43,7 @@
     
     
     
-      <link href="http://mgdelacroix.es/tags/sysadmin/index.xml" rel="alternate" type="application/rss+xml" title="Core dump" />
-    
-    <link rel="canonical" href="http://mgdelacroix.es/tags/sysadmin/">
+    <link rel="canonical" href="http://mgdelacroix.es/post/creating-an-executable-file-from-a-python-script/">
     
     
     <link rel="icon" sizes="any" href="data:image/svg+xml,%3Csvg%20viewBox='0%200%2046%2045'%20xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3EAfter%20Dark%3C/title%3E%3Cpath%20d='M.708%2045L23%20.416%2045.292%2045H.708zM35%2038L23%2019%2011%2038h24z'%20fill='%23000'/%3E%3C/svg%3E">
@@ -138,17 +135,23 @@ article [itemprop="description"] {
 
 </header>
     <main>
-  <header>
-    <h1>Sysadmin</h1>
-  </header>
-  
-    <article itemscope itemtype="http://schema.org/CreativeWork">
-  <header>
-    <h2 itemprop="name">
-      <a href="/post/creating-an-executable-file-from-a-python-script/">Creating an executable file from a python script</a>
-    </h2>
+  <article itemscope itemtype="http://schema.org/BlogPosting">
     
-      <p class="muted"><svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+<meta itemprop="name" content="Creating an executable file from a python script">
+<meta itemprop="description" content="Recently I wrote about how to deploy a python script without virtualenv. This method takes advantage of the idea of installing the script&rsquo;s dependencies in a local directory using pip and wraps them and our code with a simple shell script. The result was good, but you still needed to deploy a directory with your source code, another one with the dependencies and the wrapper script with those paths fixed, which will be the one to run.">
+
+
+<meta itemprop="dateModified" content="2017-07-23T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="612">
+
+
+
+<meta itemprop="keywords" content="dev,devops,encryption,foss,geb,git,gogs,groovy,meta,python,scripting,security,sqlite,sysadmin,translation,trick," />
+
+    <header>
+      <h1 itemprop="headline">Creating an executable file from a python script</h1>
+      <p class="muted">
+        <svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
   <circle cx="16" cy="16" r="14" />
   <path d="M16 8 L16 16 20 20" />
 </svg>
@@ -159,104 +162,156 @@ article [itemprop="description"] {
 
   Published: <time datetime="2017-07-23T00:00:00&#43;00:00">23 Jul, 2017</time>
 
+
+      </p>
+    </header>
+    
+    
+
+    <div itemprop="articleBody">
+      <p>Recently I wrote about how
+to
+<a href="/post/deploying-a-python-script-without-virtualenv">deploy a python script without virtualenv</a>. This
+method takes advantage of the idea of installing the script&rsquo;s
+dependencies in a local directory using <code>pip</code> and wraps them and our
+code with a simple <code>shell</code> script. The result was good, but you still
+needed to deploy a directory with your source code, another one with
+the dependencies and the wrapper script with those paths fixed, which
+will be the one to run. Good, but not ideal.</p>
+
+<p>Right after publishing that post, a colleague showed
+me
+<a href="https://docs.python.org/3.6/library/zipapp.html">the zipapp module</a>,
+recently added in Python 3.5, which allows you to easily create an
+executable zipfile from your source code. The feature of running
+python code from a zipfile was added long time ago (refer
+to
+<a href="https://blogs.gnome.org/jamesh/2012/05/21/python-zip-files/">this article</a> to
+find out more about the specific PEPs), but I wasn&rsquo;t aware of its
+existence. As soon as I read through the module&rsquo;s documentation, I
+decided to try and mix both ideas, bundling in a zipfile both the
+source code of a script and its dependencies.</p>
+
+<p>All the literature I found achieved this modifying the <code>sys.path</code> of
+the script, but my goal was to do it without explicitly touching the
+dependencies, just playing with the packaging process. The only
+requirement for the <code>zipapp</code> module to work is to have a <code>__main__.py</code>
+file on your sources folder with a valid entrypoint, which is the one
+that python will run when you execute the file.</p>
+
+<p>As running Python code from a zipfile can be done since Python 2.6,
+Python 3 (in fact, 3.5 or greater) is only required to be used in the
+line that calls the <code>zipapp</code> module. Through this article I&rsquo;m going to
+call <code>python3</code> in the code examples for consistency, but it is only
+needed at that precise step.</p>
+
+<p>So imagine we have a script with the following layout:</p>
+
+<pre><code class="language-sh">repo
+├── myscript
+│   ├── __main__.py
+│   └── myscript.py
+└── requirements.txt
+</code></pre>
+
+<p>If the main function of the script is called <code>entrypoint</code>, for
+example, the contents of the <code>__main__.py</code> would be:</p>
+
+<pre><code class="language-python">from myscript import entrypoint
+
+entrypoint()
+</code></pre>
+
+<p>For the script to be able to find the dependencies, we are going to
+put them right in the sources directory. This way, they will be in the
+default <code>PYTHONPATH</code>, and we will not need to touch the code&rsquo;s
+<code>sys.path</code>.</p>
+
+<p>To keep the original source code clean, we will create a <code>dist</code>
+temporal folder, that we can remove after creating the executable
+file. In this folder we will copy our source code, and we will install
+our dependencies locally:</p>
+
+<pre><code class="language-sh">mkdir dist
+cp -r myscript/* dist
+pip3 install -r requirements.txt --upgrade --system --target dist
+</code></pre>
+
+<p>At this point, we should be able to run our program directly using the
+following line, without needing to touch the <code>PYTHONPATH</code>:</p>
+
+<pre><code class="language-sh">python3 dist
+</code></pre>
+
+<p>Finally, to create the executable zipfile, just run the following:</p>
+
+<pre><code class="language-sh">python3 -m zipapp -p '/usr/bin/env python3' -o myscript.bin dist
+</code></pre>
+
+<ul>
+<li>The <code>-m</code> tells Python to run the <code>zipapp</code> module.</li>
+<li>The <code>-p</code> specifies
+the <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang</a> of the
+header of the generated executable zipfile. If your script uses
+Python 2 instead of Python 3, just modify that line.</li>
+<li>The <code>-o</code> specifies the name of the output file. The extension is
+totally optional. I prefer to use no extension at all.</li>
+<li>The last parameter is the directory of the code you want to bundle.</li>
+</ul>
+
+<p>The output of this command should leave you with a <code>myscript.bin</code>
+file, perfectly portable and whose only requirement is the python
+interpreter that you specified in the <code>-p</code> argument on its creation.</p>
+
+<p>You can even open the file with any text editor to see how it is
+basically a text file with our shebang, source code files and
+dependencies, all concatenated.</p>
+
+    </div>
+    
+    <footer>
+      <hr>
+      <p>
+  Published
+  
+    
+      by <span itemprop="author">Miguel de la Cruz</span>
+    
+  
+  <time datetime="2017-07-23T00:00:00&#43;00:00">
+    23 Jul, 2017
+  </time>
+  
+  
+    and tagged <a href="/tags/dev/">dev</a>, <a href="/tags/devops/">devops</a>, <a href="/tags/python/">python</a>, <a href="/tags/scripting/">scripting</a>, <a href="/tags/sysadmin/">sysadmin</a> and <a href="/tags/trick/">trick</a>
+  
+  using <span itemprop="wordCount">612</span> words.
 </p>
-    
-  </header>
-  
-  <div itemprop="description">
-    Recently I wrote about how to deploy a python script without virtualenv. This method takes advantage of the idea of installing the script&rsquo;s dependencies in a local directory using pip and wraps them and our code with a simple shell script. The result was good, but you still needed to deploy a directory with your source code, another one with the dependencies and the wrapper script with those paths fixed, which will be the one to run.
-  </div>
-  
-    <p><a itemprop="url" href="/post/creating-an-executable-file-from-a-python-script/">Read More&nbsp;&raquo;</a></p>
-  
-  <meta itemprop="inLanguage" content="en-us">
-  <meta itemprop="datePublished" content="2017-07-23T00:00:00&#43;00:00">
-  <meta itemprop="dateModified" content="2017-07-23T00:00:00&#43;00:00">
-  
-</article>
 
+      
   
-    <article itemscope itemtype="http://schema.org/CreativeWork">
-  <header>
-    <h2 itemprop="name">
-      <a href="/post/deploying-a-python-script-without-virtualenv/">Deploying a python script without virtualenv</a>
-    </h2>
-    
-      <p class="muted"><svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-  <circle cx="16" cy="16" r="14" />
-  <path d="M16 8 L16 16 20 20" />
-</svg>
-<span>2 minute read</span>
-<svg style="margin-bottom: -3px" class="i-edit" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-  <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
-</svg>
 
-  Published: <time datetime="2017-06-23T00:00:00&#43;00:00">23 Jun, 2017</time>
 
-</p>
-    
-  </header>
-  
-  <div itemprop="description">
-    Lately I&rsquo;ve been writing a lot of python to script some common processes in a large infrastructure. Those scripts require some python libraries which are not part of the standard library nor installed by default in all systems. For example, I love how docopt manages the arguments of a python script, or using the YAML format for my config files instead of INI.
-During the development stage, I usually manage those dependencies using pip and virtualenv, but I would like my deployment to require only python3 installed in the remote machine.
-  </div>
-  
-    <p><a itemprop="url" href="/post/deploying-a-python-script-without-virtualenv/">Read More&nbsp;&raquo;</a></p>
-  
-  <meta itemprop="inLanguage" content="en-us">
-  <meta itemprop="datePublished" content="2017-06-23T00:00:00&#43;00:00">
-  <meta itemprop="dateModified" content="2017-06-23T00:00:00&#43;00:00">
-  
-</article>
 
-  
-    <article itemscope itemtype="http://schema.org/CreativeWork">
-  <header>
-    <h2 itemprop="name">
-      <a href="/post/enhance-sqlite-output/">Enhance SQLite output</a>
-    </h2>
-    
-      <p class="muted"><svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-  <circle cx="16" cy="16" r="14" />
-  <path d="M16 8 L16 16 20 20" />
-</svg>
-<span>2 minute read</span>
-<svg style="margin-bottom: -3px" class="i-edit" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-  <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
-</svg>
+  <aside>
+    <header>Related Content</header>
+    <ul>
+      
+      
+        <li><a href="/post/deploying-a-python-script-without-virtualenv/">Deploying a python script without virtualenv</a> &ndash; 2 minutes
+      
+        <li><a href="/post/enhance-sqlite-output/">Enhance SQLite output</a> &ndash; 2 minutes
+      
+        <li><a href="/post/geb-101-simple-scripts/">Geb 101: Simple Scripts</a> &ndash; 5 minutes
+      
+    </ul>
+  </aside>
 
-  Published: <time datetime="2017-04-16T00:00:00&#43;00:00">16 Apr, 2017</time>
 
-</p>
-    
-  </header>
-  
-  <div itemprop="description">
-    I&rsquo;ve been doing some development in Baoqu with SQLite recently, and one of the problems I&rsquo;ve faced is that the default output from a query in the SQLite client is too basic, almost confusing:
-sqlite&gt; select * from users; 1|Ramira 2|Maria 3|Yamilo 4|Mario 5|Pérez-Reverte 6|Yisus 7|Miguel 8|Marta 9|andy 10|lol 11|lol2 12|lolaso  That&rsquo;s a simple query, let&rsquo;s complicate it a little more:
-sqlite&gt; select * from users as u inner join users_circles as uc on u.
-  </div>
-  
-    <p><a itemprop="url" href="/post/enhance-sqlite-output/">Read More&nbsp;&raquo;</a></p>
-  
-  <meta itemprop="inLanguage" content="en-us">
-  <meta itemprop="datePublished" content="2017-04-16T00:00:00&#43;00:00">
-  <meta itemprop="dateModified" content="2017-04-16T00:00:00&#43;00:00">
-  
-</article>
-
-  
+    </footer>
+  </article>
 </main>
     <footer>
-  <nav>
-  <p>
-    
-    <span>Page 1 of 1</span>
-    
-  </p>
-</nav>
-
   
 
 </footer>

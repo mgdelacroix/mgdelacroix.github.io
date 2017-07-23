@@ -9,6 +9,112 @@
     <atom:link href="http://mgdelacroix.es/tags/scripting/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Creating an executable file from a python script</title>
+      <link>http://mgdelacroix.es/post/creating-an-executable-file-from-a-python-script/</link>
+      <pubDate>Sun, 23 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://mgdelacroix.es/post/creating-an-executable-file-from-a-python-script/</guid>
+      <description>&lt;p&gt;Recently I wrote about how
+to
+&lt;a href=&#34;http://mgdelacroix.es/post/deploying-a-python-script-without-virtualenv&#34;&gt;deploy a python script without virtualenv&lt;/a&gt;. This
+method takes advantage of the idea of installing the script&amp;rsquo;s
+dependencies in a local directory using &lt;code&gt;pip&lt;/code&gt; and wraps them and our
+code with a simple &lt;code&gt;shell&lt;/code&gt; script. The result was good, but you still
+needed to deploy a directory with your source code, another one with
+the dependencies and the wrapper script with those paths fixed, which
+will be the one to run. Good, but not ideal.&lt;/p&gt;
+
+&lt;p&gt;Right after publishing that post, a colleague showed
+me
+&lt;a href=&#34;https://docs.python.org/3.6/library/zipapp.html&#34;&gt;the zipapp module&lt;/a&gt;,
+recently added in Python 3.5, which allows you to easily create an
+executable zipfile from your source code. The feature of running
+python code from a zipfile was added long time ago (refer
+to
+&lt;a href=&#34;https://blogs.gnome.org/jamesh/2012/05/21/python-zip-files/&#34;&gt;this article&lt;/a&gt; to
+find out more about the specific PEPs), but I wasn&amp;rsquo;t aware of its
+existence. As soon as I read through the module&amp;rsquo;s documentation, I
+decided to try and mix both ideas, bundling in a zipfile both the
+source code of a script and its dependencies.&lt;/p&gt;
+
+&lt;p&gt;All the literature I found achieved this modifying the &lt;code&gt;sys.path&lt;/code&gt; of
+the script, but my goal was to do it without explicitly touching the
+dependencies, just playing with the packaging process. The only
+requirement for the &lt;code&gt;zipapp&lt;/code&gt; module to work is to have a &lt;code&gt;__main__.py&lt;/code&gt;
+file on your sources folder with a valid entrypoint, which is the one
+that python will run when you execute the file.&lt;/p&gt;
+
+&lt;p&gt;As running Python code from a zipfile can be done since Python 2.6,
+Python 3 (in fact, 3.5 or greater) is only required to be used in the
+line that calls the &lt;code&gt;zipapp&lt;/code&gt; module. Through this article I&amp;rsquo;m going to
+call &lt;code&gt;python3&lt;/code&gt; in the code examples for consistency, but it is only
+needed at that precise step.&lt;/p&gt;
+
+&lt;p&gt;So imagine we have a script with the following layout:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;repo
+├── myscript
+│   ├── __main__.py
+│   └── myscript.py
+└── requirements.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If the main function of the script is called &lt;code&gt;entrypoint&lt;/code&gt;, for
+example, the contents of the &lt;code&gt;__main__.py&lt;/code&gt; would be:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from myscript import entrypoint
+
+entrypoint()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For the script to be able to find the dependencies, we are going to
+put them right in the sources directory. This way, they will be in the
+default &lt;code&gt;PYTHONPATH&lt;/code&gt;, and we will not need to touch the code&amp;rsquo;s
+&lt;code&gt;sys.path&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;To keep the original source code clean, we will create a &lt;code&gt;dist&lt;/code&gt;
+temporal folder, that we can remove after creating the executable
+file. In this folder we will copy our source code, and we will install
+our dependencies locally:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;mkdir dist
+cp -r myscript/* dist
+pip3 install -r requirements.txt --upgrade --system --target dist
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;At this point, we should be able to run our program directly using the
+following line, without needing to touch the &lt;code&gt;PYTHONPATH&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;python3 dist
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finally, to create the executable zipfile, just run the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;python3 -m zipapp -p &#39;/usr/bin/env python3&#39; -o myscript.bin dist
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The &lt;code&gt;-m&lt;/code&gt; tells Python to run the &lt;code&gt;zipapp&lt;/code&gt; module.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;-p&lt;/code&gt; specifies
+the &lt;a href=&#34;https://en.wikipedia.org/wiki/Shebang_(Unix)&#34;&gt;shebang&lt;/a&gt; of the
+header of the generated executable zipfile. If your script uses
+Python 2 instead of Python 3, just modify that line.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;-o&lt;/code&gt; specifies the name of the output file. The extension is
+totally optional. I prefer to use no extension at all.&lt;/li&gt;
+&lt;li&gt;The last parameter is the directory of the code you want to bundle.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The output of this command should leave you with a &lt;code&gt;myscript.bin&lt;/code&gt;
+file, perfectly portable and whose only requirement is the python
+interpreter that you specified in the &lt;code&gt;-p&lt;/code&gt; argument on its creation.&lt;/p&gt;
+
+&lt;p&gt;You can even open the file with any text editor to see how it is
+basically a text file with our shebang, source code files and
+dependencies, all concatenated.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Deploying a python script without virtualenv</title>
       <link>http://mgdelacroix.es/post/deploying-a-python-script-without-virtualenv/</link>
       <pubDate>Fri, 23 Jun 2017 00:00:00 +0000</pubDate>
