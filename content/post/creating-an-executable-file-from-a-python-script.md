@@ -92,13 +92,13 @@ Finally, to create the executable zipfile, just run the following:
 python3 -m zipapp -p '/usr/bin/env python3' -o myscript.bin dist
 ```
 
-- The `-m` tells Python to run the `zipapp` module.
-- The `-p` specifies
+- The `-m` flag tells Python to run the `zipapp` module.
+- The `-p` flag specifies
   the [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) of the
   header of the generated executable zipfile. If your script uses
   Python 2 instead of Python 3, just modify that line.
-- The `-o` specifies the name of the output file. The extension is
-  totally optional. I prefer to use no extension at all.
+- The `-o` flag specifies the name of the output file. The extension
+  is totally optional. I prefer to use no extension at all.
 - The last parameter is the directory of the code you want to bundle.
 
 The output of this command should leave you with a `myscript.bin`
