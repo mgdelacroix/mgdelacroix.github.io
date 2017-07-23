@@ -24,7 +24,8 @@ needed to deploy a directory with your source code, another one with
 the dependencies and the wrapper script with those paths fixed, which
 will be the one to run. Good, but not ideal.&lt;/p&gt;
 
-&lt;p&gt;Right after publishing that post, a colleague showed
+&lt;p&gt;Right after publishing that post, &lt;a href=&#34;https://anler.me/&#34;&gt;a colleague&lt;/a&gt;
+showed
 me
 &lt;a href=&#34;https://docs.python.org/3.6/library/zipapp.html&#34;&gt;the zipapp module&lt;/a&gt;,
 recently added in Python 3.5, which allows you to easily create an
