@@ -96,13 +96,13 @@ following line, without needing to touch the &lt;code&gt;PYTHONPATH&lt;/code&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
-&lt;li&gt;The &lt;code&gt;-m&lt;/code&gt; tells Python to run the &lt;code&gt;zipapp&lt;/code&gt; module.&lt;/li&gt;
-&lt;li&gt;The &lt;code&gt;-p&lt;/code&gt; specifies
+&lt;li&gt;The &lt;code&gt;-m&lt;/code&gt; flag tells Python to run the &lt;code&gt;zipapp&lt;/code&gt; module.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;-p&lt;/code&gt; flag specifies
 the &lt;a href=&#34;https://en.wikipedia.org/wiki/Shebang_(Unix)&#34;&gt;shebang&lt;/a&gt; of the
 header of the generated executable zipfile. If your script uses
 Python 2 instead of Python 3, just modify that line.&lt;/li&gt;
-&lt;li&gt;The &lt;code&gt;-o&lt;/code&gt; specifies the name of the output file. The extension is
-totally optional. I prefer to use no extension at all.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;-o&lt;/code&gt; flag specifies the name of the output file. The extension
+is totally optional. I prefer to use no extension at all.&lt;/li&gt;
 &lt;li&gt;The last parameter is the directory of the code you want to bundle.&lt;/li&gt;
 &lt;/ul&gt;
 
